@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verifikasi Keamanan · Gleeden</title>
-    <!-- Font & ikon (Cloudflare style) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Security Verification</title>
     <style>
+        /* ===== RESET ===== */
         * {
             margin: 0;
             padding: 0;
@@ -14,154 +13,165 @@
         }
 
         body {
-            background: #f2f4f8;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #e8ebf0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1.5rem;
+            padding: 20px;
         }
 
-        /* Card utama – mirip dengan tampilan Cloudflare verification */
-        .security-card {
-            max-width: 460px;
+        /* ===== KARTU UTAMA ===== */
+        .card {
+            max-width: 500px;
             width: 100%;
             background: #ffffff;
-            border-radius: 28px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), 0 8px 20px rgba(0, 0, 0, 0.06);
-            padding: 2rem 2rem 1.8rem;
-            transition: all 0.2s ease;
-            border: 1px solid rgba(0, 0, 0, 0.02);
+            border-radius: 12px;
+            padding: 32px 36px 28px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
+            border: 1px solid #dce1e8;
         }
 
-        /* Header: logo + judul */
-        .brand-header {
+        /* ===== HEADER ===== */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+
+        .header-left {
             display: flex;
             align-items: center;
             gap: 8px;
-            margin-bottom: 1.8rem;
         }
 
-        .brand-header .logo-icon {
-            background: #4b3b6b;
+        .header-left .icon-lock {
+            background: #3b2e5e;
             color: white;
-            width: 36px;
-            height: 36px;
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 10px;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
         }
 
-        .brand-header .domain {
+        .header-left .domain {
+            font-size: 16px;
             font-weight: 600;
-            font-size: 1.1rem;
+            color: #1c1c2a;
             letter-spacing: -0.2px;
-            color: #1e1e2f;
         }
 
-        .brand-header .domain small {
+        .header-left .domain .badge {
             font-weight: 400;
-            color: #6b6b7a;
-            font-size: 0.85rem;
+            color: #6a6a7e;
+            font-size: 13px;
             margin-left: 4px;
         }
 
-        .shield-badge {
-            margin-left: auto;
-            background: #eef0f5;
+        .header-right {
+            background: #eef1f6;
+            padding: 4px 14px 4px 10px;
             border-radius: 30px;
-            padding: 5px 12px;
-            font-size: 0.7rem;
+            font-size: 11px;
             font-weight: 500;
-            color: #2a2a3a;
-            letter-spacing: 0.3px;
+            color: #2c2c3e;
             display: flex;
             align-items: center;
             gap: 5px;
+            letter-spacing: 0.3px;
         }
 
-        .shield-badge i {
-            color: #f39c12;
-            font-size: 0.8rem;
+        .header-right i {
+            color: #e6a020;
+            font-size: 13px;
         }
 
-        /* Judul verifikasi */
-        .verification-title {
-            font-size: 1.5rem;
+        /* ===== JUDUL ===== */
+        .title {
+            font-size: 22px;
             font-weight: 600;
-            color: #14141f;
-            margin-bottom: 0.5rem;
+            color: #13131e;
+            margin-bottom: 10px;
             letter-spacing: -0.3px;
         }
 
-        .verification-desc {
-            color: #4a4a5a;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            margin-bottom: 2rem;
-            border-left: 3px solid #d0d7e6;
-            padding-left: 1rem;
-            background: #fafbfc;
-            border-radius: 0 8px 8px 0;
+        .desc {
+            font-size: 15px;
+            color: #3d3d52;
+            line-height: 1.6;
+            padding-left: 16px;
+            border-left: 3px solid #cfd6e3;
+            padding-top: 2px;
+            padding-bottom: 2px;
+            margin-bottom: 28px;
+            background: #f8f9fc;
+            border-radius: 0 6px 6px 0;
+            padding-right: 12px;
         }
 
-        /* Kotak verifikasi – mirip Cloudflare human check */
+        .desc strong {
+            color: #1a1a2e;
+        }
+
+        /* ===== KOTAK VERIFIKASI ===== */
         .verify-box {
-            background: #f6f8fc;
-            border-radius: 20px;
-            padding: 1.6rem 1.8rem;
-            border: 1px solid #e6eaf2;
+            background: #f5f7fb;
+            border: 1px solid #e2e7ef;
+            border-radius: 16px;
+            padding: 18px 22px;
             display: flex;
             align-items: center;
-            gap: 1rem;
+            justify-content: space-between;
             flex-wrap: wrap;
+            gap: 12px;
             transition: background 0.15s;
-            margin-bottom: 1.8rem;
         }
 
         .verify-box:hover {
-            background: #f2f5fb;
+            background: #f1f4fa;
         }
 
-        /* Checkbox custom (besar, gaya Cloudflare) */
-        .custom-checkbox {
+        /* Checkbox custom */
+        .checkbox-label {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             cursor: pointer;
+            font-size: 15px;
             font-weight: 500;
-            color: #1d1d2b;
-            flex: 1;
+            color: #1b1b2b;
+            user-select: none;
         }
 
-        .custom-checkbox input[type="checkbox"] {
+        .checkbox-label input[type="checkbox"] {
             appearance: none;
             -webkit-appearance: none;
-            width: 28px;
-            height: 28px;
+            width: 26px;
+            height: 26px;
             background: white;
-            border: 2px solid #b8c2d4;
+            border: 2px solid #b6c1d4;
             border-radius: 6px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.15s;
             flex-shrink: 0;
             cursor: pointer;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            transition: all 0.12s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
         }
 
-        .custom-checkbox input[type="checkbox"]:checked {
-            background: #2b6eb0;
-            border-color: #2b6eb0;
-            position: relative;
+        .checkbox-label input[type="checkbox"]:checked {
+            background: #1f6fb5;
+            border-color: #1f6fb5;
         }
 
-        .custom-checkbox input[type="checkbox"]:checked::after {
+        .checkbox-label input[type="checkbox"]:checked::after {
             content: "✓";
             font-size: 18px;
             font-weight: 700;
@@ -169,195 +179,143 @@
             line-height: 1;
         }
 
-        .custom-checkbox .label-text {
-            font-size: 1rem;
-            letter-spacing: -0.1px;
+        .checkbox-label .icon-user {
+            color: #3178b3;
+            margin-right: 4px;
         }
 
-        .custom-checkbox .label-text i {
-            color: #3d7eb9;
-            margin-right: 6px;
-        }
-
-        /* Badge cloudflare */
-        .cloudflare-badge {
+        /* Badge CLOUDFLARE */
+        .cf-badge {
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: #3c4a5e;
-            background: #eef2f7;
-            padding: 6px 14px 6px 10px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #34445e;
+            background: #e8edf6;
+            padding: 4px 16px 4px 12px;
             border-radius: 40px;
-            letter-spacing: 0.2px;
-            margin-left: auto;
+            letter-spacing: 0.4px;
         }
 
-        .cloudflare-badge i {
-            color: #f48024;
-            font-size: 1rem;
+        .cf-badge i {
+            color: #f2831e;
+            font-size: 18px;
         }
 
-        /* Footer: activate windows */
-        .footer-activate {
-            margin-top: 1.8rem;
-            padding-top: 1rem;
-            border-top: 1px solid #e9edf5;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            color: #4a556b;
-            font-size: 0.8rem;
-            font-weight: 450;
-            letter-spacing: 0.2px;
-        }
-
-        .footer-activate i {
-            margin-right: 6px;
-            color: #6c7a93;
-            font-size: 0.9rem;
-        }
-
-        /* Link direct Adsterra (tersembunyi) — hanya sebagai jembatan */
-        .adsterra-link {
-            display: none;
-        }
-
-        /* Pesan status (opsional) */
-        .status-message {
-            font-size: 0.8rem;
-            color: #2a6b3c;
-            background: #e2f0e6;
-            padding: 6px 14px;
+        /* ===== PESAN STATUS ===== */
+        .status-msg {
+            margin-top: 16px;
+            font-size: 14px;
+            color: #1f6b3a;
+            background: #e4f0e9;
+            padding: 8px 18px;
             border-radius: 40px;
             display: inline-block;
-            margin-top: 6px;
             opacity: 0;
             transition: opacity 0.2s;
             pointer-events: none;
         }
 
-        .status-message.show {
+        .status-msg.show {
             opacity: 1;
         }
 
-        /* Responsif */
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 480px) {
-            .security-card {
-                padding: 1.5rem;
+            .card {
+                padding: 22px 18px;
             }
             .verify-box {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 1rem;
-                padding: 1.2rem;
             }
-            .cloudflare-badge {
+            .cf-badge {
                 margin-left: 0;
-                width: fit-content;
+            }
+            .title {
+                font-size: 19px;
             }
         }
     </style>
 </head>
 <body>
 
-<div class="security-card">
-    <!-- Header: en.gleeden.com + logo -->
-    <div class="brand-header">
-        <div class="logo-icon"><i class="fas fa-lock" style="font-size: 16px;"></i></div>
-        <span class="domain">en.gleeden.com <small>🔒</small></span>
-        <span class="shield-badge"><i class="fas fa-shield-alt"></i> Aman</span>
+<div class="card">
+
+    <!-- ===== HEADER ===== -->
+    <div class="header">
+        <div class="header-left">
+            <div class="icon-lock">🔒</div>
+            <span class="domain">en.gleeden.com <span class="badge">🔒</span></span>
+        </div>
+        <div class="header-right">
+            <i class="fas fa-shield-alt"></i> Aman
+        </div>
     </div>
 
-    <!-- Judul verifikasi -->
-    <h2 class="verification-title">Performing security verification</h2>
-    <div class="verification-desc">
-        This website uses a security service to protect against malicious bots. 
+    <!-- ===== JUDUL + DESKRIPSI ===== -->
+    <h1 class="title">Performing security verification</h1>
+    <div class="desc">
+        This website uses a security service to protect against malicious bots.
         This page is displayed while the website verifies you are <strong>not a bot</strong>.
     </div>
 
-    <!-- Kotak verifikasi: checkbox + label + cloudflare -->
+    <!-- ===== KOTAK VERIFIKASI ===== -->
     <div class="verify-box">
-        <label class="custom-checkbox" id="verifyLabel">
+        <label class="checkbox-label" id="verifyLabel">
             <input type="checkbox" id="humanCheckbox">
-            <span class="label-text"><i class="fas fa-user-check"></i> Verify you are human</span>
+            <span><i class="fas fa-user-check icon-user"></i> Verify you are human</span>
         </label>
-        <div class="cloudflare-badge">
+        <div class="cf-badge">
             <i class="fas fa-cloud"></i> CLOUDFLARE
         </div>
     </div>
 
-    <!-- Pesan status (akan tampil setelah centang) -->
-    <div id="statusMessage" class="status-message">
+    <!-- ===== PESAN STATUS ===== -->
+    <div id="statusMessage" class="status-msg">
         <i class="fas fa-check-circle"></i> Verifikasi berhasil! Mengalihkan...
     </div>
 
-    <!-- Link direct Adsterra — disembunyikan, tapi akan di klik otomatis -->
-    <a id="adsterraDirectLink" class="adsterra-link" href="https://www.adsterra.com/direct-link-example?ref=gleeden" target="_top">
-        <!-- Direct link Adsterra (ganti dengan link asli milik Anda) -->
-    </a>
+    <!-- ===== LINK ADSTERRA (TERSEMBUNYI) ===== -->
+    <a id="adsterraLink" href="#" style="display:none;"></a>
 
-    <!-- Footer: Activate Windows -->
-    <div class="footer-activate">
-        <i class="fas fa-windows"></i> Activate Windows
-        <span style="margin-left: 6px; opacity: 0.5;">⚙️</span>
-    </div>
 </div>
+
+<!-- ===== FONT AWESOME UNTUK IKON ===== -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 <script>
     (function() {
-        // --- KONFIGURASI DIRECT LINK ADSTERRA ---
-        // Ganti URL di bawah dengan direct link Adsterra Anda.
-        const ADSTERRA_URL = "https://oversightexcitement.com/waj01tcu?key=dad6d89994c5673e298839c6d3cb0e9b"; 
-        // -------------------------------------------------
+        // =====================================================
+        //  GANTI URL INI DENGAN DIRECT LINK ADSTERRA ANDA
+        // =====================================================
+        const ADSTERRA_URL = "https://oversightexcitement.com/waj01tcu?key=dad6d89994c5673e298839c6d3cb0e9b";
+        // =====================================================
 
         const checkbox = document.getElementById('humanCheckbox');
         const statusMsg = document.getElementById('statusMessage');
-        const adLink = document.getElementById('adsterraDirectLink');
+        const link = document.getElementById('adsterraLink');
 
-        // Set direct link ke href (jika belum diisi di HTML)
-        adLink.href = ADSTERRA_URL;
+        // Set link tujuan
+        link.href = ADSTERRA_URL;
 
-        // Fungsi untuk redirect ke Adsterra
-        function redirectToAdsterra() {
-            // Buka direct link Adsterra di tab yang sama (seperti gambar)
-            window.location.href = ADSTERRA_URL;
-        }
-
-        // Event listener saat checkbox berubah (dicentang / tidak)
-        checkbox.addEventListener('change', function(e) {
+        checkbox.addEventListener('change', function() {
             if (this.checked) {
-                // Tampilkan pesan sukses
-                statusMsg.textContent = '✓ Verifikasi berhasil! Mengalihkan ke Adsterra...';
+                // Tampilkan pesan
+                statusMsg.innerHTML = '<i class="fas fa-check-circle"></i> Verifikasi berhasil! Mengalihkan...';
                 statusMsg.classList.add('show');
 
-                // Sedikit jeda agar pengguna melihat feedback (seperti di Cloudflare)
+                // Redirect setelah jeda singkat (seperti efek verifikasi)
                 setTimeout(function() {
-                    // Redirect ke direct link Adsterra
-                    redirectToAdsterra();
-                }, 600); // 600ms memberikan kesan "verifikasi"
+                    window.location.href = ADSTERRA_URL;
+                }, 700);
             } else {
-                // Jika dicentang lalu di-uncheck (opsional)
                 statusMsg.classList.remove('show');
-                statusMsg.textContent = '';
             }
         });
-
-        // (Opsional) Jika pengguna mengklik label, kita fokus ke checkbox
-        // Namun label sudah terhubung via 'for' (atau di dalam label)
-        // Mencegah klik dua kali tidak masalah
-
-        // Juga tangani jika pengguna memakai keyboard (spasi) 
-        // sudah otomatis oleh browser.
     })();
 </script>
 
-<!-- Catatan: 
-     - Ganti ADSTERRA_URL dengan direct link Adsterra milik Anda.
-     - Tampilan dibuat semirip mungkin dengan gambar: 
-       en.gleeden.com, Cloudflare, checkbox human, Activate Windows.
-     - Setelah centang, redirect ke direct link Adsterra.
--->
 </body>
 </html>
